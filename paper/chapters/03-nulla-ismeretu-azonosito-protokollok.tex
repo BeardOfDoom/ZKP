@@ -1,0 +1,29 @@
+\chapter{Nulla-ismeretű protokollok azonosításra}
+
+A nulla-ismeretű protokollok egyik elterjedt alkalmazása a felhasználók azonosítása, autentikálása. Ebben a fejezetben ilyen protokollokat fogunk áttekinteni.
+
+\section*{A Schnorr azonosító protokoll}
+
+Ezt megelőzően is léteztek már nulla-ismeretű protokollok, mint Fiat-Shamir \cite{FiatShamir} és annak továbbfejlesztései (FFS \cite{FeigeFiatShamir} és GQ protokollok \cite{GuillouQuisquater}), amelyek biztonsságosságukat a faktorizációs probléma nehézségéből nyerik. 
+
+A Schnorr protokoll \cite{Schnorr}, ezzel ellentétben biztonságát a diszkrét logaritmus problémából nyeri. Manapság az elliptikus görbe kriptográfia egyre nagyobb teret nyer, köszönhetően a kisebb kulcsméretnek, vele együtt pedig növekszik az elliptikus görbe diszkrét logaritmus probléma. Ezért úgy érzem előnyösebb Schnorr protokollját áttekinteni, mint az őt megelőző faktorizáción alapuló protokollokat.
+
+\subsection*{A diszkrét logaritmus probléma \cite{BerczesPetho}}
+
+\begin{definition}
+    Legyen $m$ egy pozitív egész szám. Egy $g$ egész számot primitív gyöknek nevezünk modulo $m$ ha minden $b \in \{1,2,...,m-1\}$ szám esetén, melyre $(b,m) = 1$ létezik olyan $k$ pozitív egész szám, melyre $g^k \equiv b \pmod{m}$.
+\end{definition}
+
+\begin{theorem}
+    Akkor, és csakis akkor létezik primitív gyök modulo $m$, ha $m = 2$, $m = 4$, $m = p^k$ vagy $m = 2p^k$, ahol $p$ valamely pozitív szám.
+\end{theorem}
+
+\begin{definition}
+    Legyen $p$ egy pozitív prímszám, $b$ egy egész szám, melyre $(b, p) = 1$, és legyen $g$ egy primitív gyök modulo $p$. Azt a legkisebb pozitív egész $k$ számot, melyre teljesül, hogy $g^k \equiv b \pmod{p})$ a $b$ szám $g$ alapú diszkrét logaritmusának nevezzük modulo $p$.
+\end{definition}
+
+Miközben a modulo $p$ történő hatványozás nagy $p$ értékek esetén is gyorsan kiszámítható, addig ennek megfordítása, a diszkrét logaritmus kiszámítása nagyon időigényes feladat.
+
+\subsection*{A Schnorr azonosító protokoll algoritmusa}
+
+\section*{M-Pin protokoll}
