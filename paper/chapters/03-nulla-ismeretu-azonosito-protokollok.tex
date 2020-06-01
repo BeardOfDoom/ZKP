@@ -64,6 +64,12 @@ Ezt követően az azonosító protokoll-t mutatja a \ref{Figure::SchnorrProt} á
     \label{Figure::SchnorrProt}
 \end{figure}
 
-\subsection*{A Schnorr azonosító protokoll biztonságossága}
+\subsection*{A Schnorr azonosító protokoll biztonságossága}á
+
+\begin{itemize}
+    \item Biztonság: A biztonságosság egyik fő szereplője a $t$, ezt olyan módon kell megválasztani, hogy $2^{-t}$ kellően kicsi legyen, hiszen ez a valószínűsége a helyes tippelésnek a választott $e$ értékre. A másik fontos pontja a protokollnak a megfelelő méretű $q$ választása, mert ez felelős a diszkrét logaritmus probléma nehézségéért.
+    \item Megalapozottság: A protokollt áttekintve, belátható, hogy $s$ ismerete nélkül nem lehetséges senki számára, hogy $A$-nak adja ki magát, mert ezen információ ismeretében képes csak sikeresen végigjátszani a folyamatot.
+    \item Nulla-ismeret: A protokoll csak akkor teljesíti a nulla-ismeret tulajdonságot, ha a hitelesítő fél becsületesen jár el. Ez azt jelenti, hogy az $e$ értéket valóban random módon választja ki és nem a kapott $x$ értékétől függően. Ha $x$ értéke alapján választ egy számára megfelelő $e$-t, akkor képes információt kinyerni a felhasználó a bizonyító fél titkával kapcsolatban.
+\end{itemize}
 
 \section*{M-Pin protokoll}
