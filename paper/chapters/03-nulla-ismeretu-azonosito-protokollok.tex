@@ -135,4 +135,17 @@ Azonban az elliptikus görbe kriptográfia legfontosabb tényezője az elliptiku
 
 \subsection*{Párosítás-alapú kriptográfia}
 
+A párosításról és a kriptográfiában való alkalmazásáról részletes olvasmány a Guide to pairing-based cryptography \cite{PBCGuide}. Számunkra azonban elegendő a párosítás műveletének tulajdonságait ismerni, továbbá azt, hogy a párosítás alkalmazásával komplex matematikai problémákat vagyunk képesek redukálni azzal, hogy egy másik csoportba visszük át a problémát.
+
+Jelöljön $G_1, G_2$ additív, míg $G_\mathbb{T}$ multiplikatív $r$ rendű csoportokat. Az $e$ párosítás egy olyan $e : G_1 \times G_2 \rightarrow G_\mathbb{T}$ leképezés, amely a következő tulajdonágokkal rendelkezik:
+\begin{outdentlist}
+    \item[] \textbf{Bilineáris.} Jelölje $\mathbb{Z}_r$ az egész számok halmazát modulo $r$, ekkor $\forall P_1 \in G_1, P_2 \in G_2$ és $a, b \in \mathbb{Z}_r$ esetén $e(aP_1, bP_2) = e(P_1, P_2)^{ab}$.
+
+    \item[] \textbf{Nem elfajuló.} Ha $P_1 \neq 0_{G_1}$ és $P_2 \neq 0_{G_2}$, akkor $e(P_1, P_2) \neq 1_{G_\mathbb{T}}$, ahol $0_{G_1}$ (illetve $0_{G_2}$ és $1_{G_\mathbb{T}}$) az egységeleme a $G_1$ csoportnak (illetve $G_2$ és $G_\mathbb{T}$ csoportnak).
+
+    \item[] \textbf{Hatékonyan számítható.}
+
+    \item[] \textbf{Nehezen megfordítható.}
+\end{outdentlist}
+
 \subsection*{Az M-Pin protokoll algoritmusa}
