@@ -127,6 +127,12 @@ Most, hogy ismerjük a műveleteket, bemutatom a protokoll szempontjából fonto
 
 Legyenek $n \in \mathbb{Z}$ és $P \in E(K)$, ha $n = n_1 + n_2$, akkor $nP = n_1P + n_2P$. Továbbá, legyen $P_1, P_2 \in E(K)$, ekkor $n(P_1 + P_2) = nP_1 + nP_2$.
 
+Azonban az elliptikus görbe kriptográfia legfontosabb tényezője az elliptikus diszkrét logaritmus probléma, ami egy nehezen megoldható probléma.
+
+\begin{definition*}
+    Az \textbf{elliptikus diszkrét logaritmus probléma} (ECDLP): Adott egy $E$ elliptikus görbe az $\mathbb{F}_q$ véges test felett, egy $n$ rendű $P \in E(\mathbb{F}_q)$ pont, valamint egy $Q$ pont, amely $P$ többszöröse. Keressük azt az $l \in [0, n - 1]$ egész számot, amelyre $Q = lP$ teljesül. Ezt a számot a $Q$ pont $P$ alapú elliptikus diszkrét logaritmusának nevezzük.
+\end{definition*}
+
 \subsection*{Párosítás-alapú kriptográfia}
 
 \subsection*{Az M-Pin protokoll algoritmusa}
