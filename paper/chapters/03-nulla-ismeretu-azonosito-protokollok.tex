@@ -91,6 +91,42 @@ Mielőtt áttekintenénk, hogyan is működik ez az eljárás, fontos ismernünk
 
 \subsection*{Elliptikus görbe kriptográfia}
 
+A témáról kimerítően a \cite{ECCGuide, ECCHandbook} könyvekben lehet olvasni, én csupán a protokoll megértéséhez szükséges részleteket szeretném áttekinteni.
+
+A kriptográfiában kiemelt szereppel bírnak az úgynevezett Weierstrass elliptikus görbék: $$y^2 = x^3 + ax + b.$$ Egy ilyen görbéről látható példa a \dotref{Figure::ECC::EllipticCurve} ábrán.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{elliptikus-gorbe.png}
+    \caption{Az $y^2 = x^3 + 1$ görbe a valós számok teste felett.}
+    \label{Figure::ECC::EllipticCurve}
+\end{figure}
+
+\subsubsection*{Az $E(K) : y^2 = x^3 + ax + b$ görbe tulajdonságai \protect\footnote{Ha $K$ karakterisztikája nem $2$.}}
+
+\begin{outdentlist}
+    \item[]
+    \textbf{Egységelem.} $P + O = O + P = P$, minden $P \in E(K)$ esetén.
+
+    \item[]
+    \textbf{Ellentettek.} Ha $P = (x, y) \in E(K)$, akkor $(x, y) + (x, -y) = O$. Az $(x, -y)$ pontot $-P$-vel jelöljük és $P$ ellentettjének nevezzük. $-P$ is $E(K)$ egy pontja.
+
+    \item[]
+    \textbf{Pontok összeadása.} Legyen $P = (x_1, y_1) \in E(K)$ és $Q = (x_2, y_2) \in E(K)$, úgy hogy $P \neq \pm Q$. Ekkor $P + Q = (x_3, y_3)$, ahol 
+    \begin{center}$x_3 = \big(\frac{y_2 - y_1}{x_2 - x_1}\big)^2 - x_1 - x_2$ és $y_3 = \frac{y_2 - y_1}{x_2 - x_1}(x_1 - x_3) - y_1$.\end{center}
+
+    \item[]
+    \textbf{Pont duplázás.} Legyen $P = (x_1, y_1) \in E(K)$, úgy hogy $P \neq -P$. Ekkor $2P = (x_3, y_3)$, ahol
+    \begin{center}$x_3 = \big(\frac{3x_1^2 + a}{2y_1}\big)^2 - 2x_1$ és $y_3 = \frac{3x_1^2 + a}{2y_1}(x_1 - x_3) - y_1$.\end{center} Ha $P = -P$, akkor $2P = O$.
+
+    \item[]
+    \textbf{Pontok skalár szorzása.} Legyen $P \in E(K)$ és $n \in \mathbb{Z}$. Ekkor egy lehetséges módszer a skalár szorzásra a \textit{Double-and-Add} módszer: $$nP = \sum_{i = 0}^{t-1} n_i 2^i(P) = n_0P + 2(n_1P + 2(n_2P + 2(... + 2(n_{t-1}P)...))).$$
+\end{outdentlist}
+
+Most, hogy ismerjük a műveleteket, bemutatom a protokoll szempontjából fontos tulajdonságot a disztibutivitást az elliptikus görbéken.
+
+Legyenek $n \in \mathbb{Z}$ és $P \in E(K)$, ha $n = n_1 + n_2$, akkor $nP = n_1P + n_2P$. Továbbá, legyen $P_1, P_2 \in E(K)$, ekkor $n(P_1 + P_2) = nP_1 + nP_2$.
+
 \subsection*{Párosítás-alapú kriptográfia}
 
 \subsection*{Az M-Pin protokoll algoritmusa}
