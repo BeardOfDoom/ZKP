@@ -82,3 +82,15 @@ $= s$
 \end{minipage}
 
 \section*{M-Pin protokoll}
+
+Az M-Pin protokoll \cite{MPin} egy rendkívül modern elgondolása az autentikációnak, ami a jelenlegi felhasználónév és jelszó alapú rendszerek egy működőképes alternatívája. Ahogy korábban is említettem a jelszavas rendszerek nagy hátránya, hogy a szervereken létezik egy adatbázis amiben a felhasználói jelszavak tárolásra kerülnek többnyire hash-elt változatban (azonban még előfordulnak olyan esetek is, amikor a tényleges jelszót tárolják). Ezeket az adatbázisokat gyakran feltörik és ellopják.
+
+Az M-Pin célja az, hogy a regisztrált felhasználóknak osszunk ki egy nagy kriptográfiai titkot, amelyet felhasználva nulla-ismeretű bizonyítékkal képes igazolni kilétét. Így nincs szükség arra, hogy bármilyen felhasználói titkot tároljon a szolgáltató a szerverein.
+
+Mielőtt áttekintenénk, hogyan is működik ez az eljárás, fontos ismernünk az elliptikus görbék és a párosítás alapjait.
+
+\subsection*{Elliptikus görbe kriptográfia}
+
+\subsection*{Párosítás-alapú kriptográfia}
+
+\subsection*{Az M-Pin protokoll algoritmusa}
