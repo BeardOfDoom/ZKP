@@ -166,3 +166,11 @@ Ezek ismeretében tekinthetjük magát az azonosítás folyamatát, ami a \ref{F
     \caption{M-Pin protokoll.}
     \label{Figure::MPIN}
 \end{figure}
+
+\subsection*{Az M-Pin protokoll biztonságossága}
+
+\begin{itemize}
+    \item Biztonság: A támadási lehetőségek a Diffie-Hellmann problémára és annak variációira vezethetők vissza, amelyek mind nehéz problémák, ezért a protokoll biztonságosnak tekinthető.
+    \item Megalapozottság: A definíció szerinti megalapozottság olyan szinten nem jelenik meg, hogy a protokoll egyik résztvevője a TA ismeri és bármikor kiszámíthatja a felhasználói titkot. Azonban ettől eltekintve belátható, hogy a felhasználó által választott $\alpha$ PIN kód és a token ismerete nélkül nem végrehajtható a protokoll.
+    \item Nulla-ismeret: A szerver nem képes információhoz jutni sem a folyamat során választott $x$ értékről, sem a felhasználói titokról, mert mind a két esetben az ECDLP megoldása szükséges, ami nehéz feladat. Ezért, ha $y$-t nem random módon választja, akkor se képes információt kinyerni.
+\end{itemize}
