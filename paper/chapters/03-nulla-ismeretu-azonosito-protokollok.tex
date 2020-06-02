@@ -85,7 +85,7 @@ $= s$
 
 Az M-Pin protokoll \cite{MPin} egy rendkívül modern elgondolása az autentikációnak, ami a jelenlegi felhasználónév és jelszó alapú rendszerek egy működőképes alternatívája. Ahogy korábban is említettem a jelszavas rendszerek nagy hátránya, hogy a szervereken létezik egy adatbázis amiben a felhasználói jelszavak tárolásra kerülnek többnyire hash-elt változatban (azonban még előfordulnak olyan esetek is, amikor a tényleges jelszót tárolják). Ezeket az adatbázisokat gyakran feltörik és ellopják.
 
-Az M-Pin célja az, hogy a regisztrált felhasználóknak osszunk ki egy nagy kriptográfiai titkot, amelyet felhasználva nulla-ismeretű bizonyítékkal képes igazolni kilétét. Így nincs szükség arra, hogy bármilyen felhasználói titkot tároljon a szolgáltató a szerverein.
+Az M-Pin célja az, hogy a regisztrált felhasználóknak osszunk ki egy nagy kriptográfiai titkot, amelyet felhasználva nulla-ismeretű bizonyítékkal képes igazolni kilétét. Így nincs szükség arra, hogy bármilyen felhasználói titkot tároljon a szolgáltató a szerverein. Erre a módszerre alapozva kínál szolgáltatást a MIRACL\footnote{https://miracl.com/}.
 
 Mielőtt áttekintenénk, hogyan is működik ez az eljárás, fontos ismernünk az elliptikus görbék és a párosítás alapjait.
 
@@ -149,3 +149,20 @@ Jelöljön $G_1, G_2$ additív, míg $G_\mathbb{T}$ multiplikatív $r$ rendű cs
 \end{outdentlist}
 
 \subsection*{Az M-Pin protokoll algoritmusa}
+
+A protokollban három entitás játszik szerepet. Az első a Megbízható Hatóság (Trusted Authority, innentől TA). Ennek a szerepe, hogy a megfelelő titkos kulcsokat kiossza a második enitásnak, a felhasználóknak és a harmadik entitásnak, a szervereknek (különböző szolgáltatásoknak). 
+
+A TA funkcionalitása nagyon hasonlít az Azonosító-alapú (Identity-based) protokollok körében alkalmazott Privát Kulcs Generátorra, valamint maga a kulcs generálás folyamata is ugyanaz. A TA rendelkezik egy mesterkulccsal $s$, és a felhasználók valamilyen azonosítókkal $ID$. A felhasználók kulcsának kiszámítása úgy megy végbe, hogy egy $H$ hash függvényt alkalmazva kiszámítjuk $sH(ID)$-t, ezzel előáll egy $G_1$ béli elem. Majd ezt továbbítjuk a felhasználónak. A szerver kulcsának generálása, pedig úgy történik, hogy a szerverhez rendelünk egy egyedi $Q \in G_2$ generátort, majd kiszámítjuk $sQ$-t és azt továbbítjuk.
+
+A TA egyszerű módon alakítható elosztott rendszerré, csupán az $s$ mesterkulcsot kell tényezőkre bontani, $s = s_1 + s_2$ majd a tényezőkkel külön külön elvégezni a fenti műveleteket, amiknek eredményét a felhasználó összeadva megkapja a kulcsát. Ezzel könnyedén biztonságosabbá lehet tenni a rendszert, hisz nem egy helyen lesz tárolva az $s$ mesterkulcs.
+
+A protokoll különlegessége, hogy a kulcs könnyedén szétbontható egy tokenre és egy PIN kódra, ezzel több faktorossá alakítva az autentikáció folyamatát. Legyen a választott PIN kód $\alpha$ és $A = H(ID)$, ekkor a token $(s - \alpha)A$, ami úgy számolható, hogy $sA$-ból kivonjuk $\alpha A$-t. $sA$ visszaállítása pedig a következő módon történik: $sA = (s - \alpha)A + \alpha A$.
+
+Ezek ismeretében tekinthetjük magát az azonosítás folyamatát, ami a \ref{Figure::MPIN} ábrán látható:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{MPIN.png}
+    \caption{M-Pin protokoll.}
+    \label{Figure::MPIN}
+\end{figure}
