@@ -2,7 +2,15 @@
 
 Ezen fejezet célja, hogy az azonosításon túl további felhasználási lehetőségeit mutassam be a nulla-ismeretű protokolloknak. Tényleges protokollokat nem fogunk tekinteni, csupán ötleteket és azok előnyeit.
 
-NIZK \cite{NIZK}
+\section*{Nem-interaktív nulla-ismeretű protokollok}
+
+A nulla-ismeretű protokollok közül eddig csupán interaktív protokollokról volt szó, azonban rendkívül elterjedt az interaktivitást nem követelő protokollok alkalmazása is. Ezen protokollok megszületését az a probléma indokolta, hogy az interaktivitás számos oda-vissza történő kommunikációt igényel és míg a számítások gyorsan elvégezhetők, az esetenként akár több száz adatcsere közel sem elhanyagolható kölcségekkel jár. 
+
+Az ilyen protokollok \cite{NIZK, NIZK2} alapötlete, hogy létezzen valamilyen mindenkinek elérhető formában olyan random adat, amely rendelkezik a "well mixedness" tulajdonsággal, ami nem egy kézzel fogható tulajdonság, definíciót a szerzők se adtak. Felfoghatjuk úgy, hogy kriptográfiailag biztonságos random generátorral készült adat.
+
+Ezzel a módszerrel a kommunikáció egyirányúvá válik, hiszen a hitelesítő fél feladata, hogy random értéket küldjön a bizonyító félnek helyettesítésre került a publikus random adattal, így minimális módosítással csökkenthettük protokollunk komplexitását, méghozzá úgy, hogy a nulla-ismeretű protokollok alaptulajdonságai nem sérülnek.
+
+\section*{???}
 
 Mielőtt a következő protokollokat tárgyalnánk, szükséges megismerkednünk a \textit{proof of knowledge} mellett az \textit{argument of knowledge} definícióval, ami annyiban különbözük, hogy a \textit{megalapozottság} tulajdonság esetén a statisztikai követelményt számítási követelménnyé gyengíti. Tehát, míg előbbi esetben a bizonyító fél korlátlan számítási kapacitással bír, addig utóbbiban polinomiálisan kötött számítási kapacitással számolunk.
 
