@@ -3,6 +3,7 @@
 \usepackage{geometry}
 \geometry{a4paper, left=30mm, right=20mm, top=30mm, bottom=30mm}
 
+\usepackage{hyperref}
 \usepackage{t1enc}
 \usepackage[utf8]{inputenc}
 \usepackage[magyar]{babel}
@@ -46,6 +47,10 @@
 
 \begin{document}
     \input{./misc/titlepage.tex}
+
+    \setlength{\cftbeforechapskip}{.2ex}
+    \setlength{\cftbeforesecskip}{-.5ex}
+    \tableofcontents
 
     \input{./chapters/01-bevezetes.tex}
     \input{./chapters/02-nulla-ismeretu-protokollok.tex}

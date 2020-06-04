@@ -2,7 +2,9 @@
 
 Ezen fejezet célja, hogy az azonosításon túl további felhasználási lehetőségeit mutassam be a nulla-ismeretű protokolloknak. Tényleges protokollokat nem fogunk tekinteni, csupán ötleteket és azok előnyeit.
 
-\section*{Nem-interaktív nulla-ismeretű protokollok}
+Mielőtt a következő protokollokat tárgyalnánk, szükséges megismerkednünk a \textit{proof of knowledge} mellett az \textit{argument of knowledge} definícióval, ami annyiban különbözük, hogy a \textit{megalapozottság} tulajdonság esetén a statisztikai követelményt számítási követelménnyé gyengíti. Tehát, míg előbbi esetben a bizonyító fél korlátlan számítási kapacitással bír, addig utóbbiban polinomiálisan kötött számítási kapacitással számolunk.
+
+\section{Nem-interaktív nulla-ismeretű protokollok}
 
 A nulla-ismeretű protokollok közül eddig csupán interaktív protokollokról volt szó, azonban rendkívül elterjedt az interaktivitást nem követelő protokollok alkalmazása is. Ezen protokollok megszületését az a probléma indokolta, hogy az interaktivitás számos oda-vissza történő kommunikációt igényel és míg a számítások gyorsan elvégezhetők, az esetenként akár több száz adatcsere közel sem elhanyagolható kölcségekkel jár. 
 
@@ -10,11 +12,12 @@ Az ilyen protokollok \cite{NIZK, NIZK2} alapötlete, hogy létezzen valamilyen m
 
 Ezzel a módszerrel a kommunikáció egyirányúvá válik, hiszen a hitelesítő fél feladata, hogy random értéket küldjön a bizonyító félnek helyettesítésre került a publikus random adattal, így minimális módosítással csökkenthettük protokollunk komplexitását, méghozzá úgy, hogy a nulla-ismeretű protokollok alaptulajdonságai nem sérülnek.
 
-\section*{???}
+\section{Succinct non-interactive arguments of knowledge - SNARK}
 
-Mielőtt a következő protokollokat tárgyalnánk, szükséges megismerkednünk a \textit{proof of knowledge} mellett az \textit{argument of knowledge} definícióval, ami annyiban különbözük, hogy a \textit{megalapozottság} tulajdonság esetén a statisztikai követelményt számítási követelménnyé gyengíti. Tehát, míg előbbi esetben a bizonyító fél korlátlan számítási kapacitással bír, addig utóbbiban polinomiálisan kötött számítási kapacitással számolunk.
+Az interaktivitás elhagyásával sikerült kisebb komplexitással rendelkező protokollokat készíteni és ezt felhasználva a gyakorlatban is alkalmazni őket. Továbbra is probléma volt azonban, hogy sok esetben a bizonyító fél által küldött üzenet mérete nagy volt. Például, ha kis számítási kapacitással rendelkezünk és a számítást kiszervezzük valamilyen felhőszolgáltatónak, azonban szeretnénk valamilyen bizonyítékot is kapni a számítás helyességéről, akkor olyan protokoll alkalmazása szükséges használni, amely a kis számítási kapacitással bíró felhasználót nem terheli meg. Erre kompakt és számításigényét tekintve könnyű argumentumok alkalmazása szükséges. Ilyen protokollok például a SNARG (succinct non-interactive argument), vagy a SNARK (succinct non-interactive argument
+of knowledge).
 
-SNARKs \cite{SNARK}
+Egy kurrens protokoll a \cite{SNARK}, amelyet blockchain alapú kriptovaluták esetén előszeretettel alkalmaznak (Zcash\footnote{https://z.cash/technology/zksnarks/}, Filecoin\footnote{https://filecoin.io/}). Számos nyílt forráskódú megvalósítása létezik: \href{https://github.com/scipr-lab/libsnark}{libsnark}, \href{https://github.com/zkcrypto/bellman}{bellman}, \href{https://github.com/scipr-lab/dizk}{dizk}, \href{https://github.com/iden3/wasmsnark}{wasmsnark}.
 
 STARKs \cite{STARK}
 

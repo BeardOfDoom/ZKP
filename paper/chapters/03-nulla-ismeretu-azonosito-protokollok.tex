@@ -2,13 +2,13 @@
 
 A nulla-ismeretű protokollok egyik elterjedt alkalmazása a felhasználók azonosítása, autentikálása. Ebben a fejezetben ilyen protokollokat fogunk áttekinteni.
 
-\section*{A Schnorr azonosító protokoll}
+\section{A Schnorr azonosító protokoll}
 
 Ezt megelőzően is léteztek már nulla-ismeretű protokollok, mint Fiat-Shamir \cite{FiatShamir} és annak továbbfejlesztései (FFS \cite{FeigeFiatShamir} és GQ protokollok \cite{GuillouQuisquater}), amelyek biztonsságosságukat a faktorizációs probléma nehézségéből nyerik. 
 
 A Schnorr protokoll \cite{Schnorr}, ezzel ellentétben biztonságát a diszkrét logaritmus problémából nyeri. Manapság az elliptikus görbe kriptográfia egyre nagyobb teret nyer, köszönhetően a kisebb kulcsméretnek, vele együtt pedig növekszik az elliptikus görbe diszkrét logaritmus probléma. Ezért úgy érzem előnyösebb Schnorr protokollját áttekinteni, mint az őt megelőző faktorizáción alapuló protokollokat.
 
-\subsection*{A diszkrét logaritmus probléma}\cite{BerczesPetho}
+\subsection{A diszkrét logaritmus probléma}\cite{BerczesPetho}
 
 \begin{definition}
     Legyen $m$ egy pozitív egész szám. Egy $g$ egész számot primitív gyöknek nevezünk modulo $m$ ha minden $b \in \{1,2,...,m-1\}$ szám esetén, melyre $(b,m) = 1$ létezik olyan $k$ pozitív egész szám, melyre $g^k \equiv b \pmod{m}$.
@@ -24,7 +24,7 @@ A Schnorr protokoll \cite{Schnorr}, ezzel ellentétben biztonságát a diszkrét
 
 Miközben a modulo $p$ történő hatványozás nagy $p$ értékek esetén is gyorsan kiszámítható, addig ennek megfordítása, a diszkrét logaritmus kiszámítása nagyon időigényes feladat.
 
-\subsection*{A Schnorr azonosító protokoll algoritmusa}
+\subsection{A Schnorr azonosító protokoll algoritmusa}
 
 A protokol a rendszer paraméterek inicializáló lépésével indul.
 
@@ -64,7 +64,7 @@ Ezt követően az azonosító protokoll-t mutatja a \ref{Figure::SchnorrProt} á
     \label{Figure::SchnorrProt}
 \end{figure}
 
-\subsection*{A Schnorr azonosító protokoll biztonságossága}
+\subsection{A Schnorr azonosító protokoll biztonságossága}
 
 \begin{itemize}
     \item Biztonság: A biztonságosság egyik fő szereplője a $t$, ezt olyan módon kell megválasztani, hogy $2^{-t}$ kellően kicsi legyen, hiszen ez a valószínűsége a helyes tippelésnek a választott $e$ értékre. A másik fontos pontja a protokollnak a megfelelő méretű $q$ választása, mert ez felelős a diszkrét logaritmus probléma nehézségéért.
@@ -81,7 +81,7 @@ $= s(e_1 - e_2) / (e_1 - e_2) \pmod{q}$ \\
 $= s$
 \end{minipage}
 
-\section*{M-Pin protokoll}
+\section{M-Pin protokoll}
 
 Az M-Pin protokoll \cite{MPin} egy rendkívül modern elgondolása az autentikációnak, ami a jelenlegi felhasználónév és jelszó alapú rendszerek egy működőképes alternatívája. Ahogy korábban is említettem a jelszavas rendszerek nagy hátránya, hogy a szervereken létezik egy adatbázis amiben a felhasználói jelszavak tárolásra kerülnek többnyire hash-elt változatban (azonban még előfordulnak olyan esetek is, amikor a tényleges jelszót tárolják). Ezeket az adatbázisokat gyakran feltörik és ellopják.
 
@@ -89,7 +89,7 @@ Az M-Pin célja az, hogy a regisztrált felhasználóknak osszunk ki egy nagy kr
 
 Mielőtt áttekintenénk, hogyan is működik ez az eljárás, fontos ismernünk az elliptikus görbék és a párosítás alapjait.
 
-\subsection*{Elliptikus görbe kriptográfia}
+\subsection{Elliptikus görbe kriptográfia}
 
 A témáról kimerítően a \cite{ECCGuide, ECCHandbook} könyvekben lehet olvasni, én csupán a protokoll megértéséhez szükséges részleteket szeretném áttekinteni.
 
@@ -102,7 +102,7 @@ A kriptográfiában kiemelt szereppel bírnak az úgynevezett Weierstrass ellipt
     \label{Figure::ECC::EllipticCurve}
 \end{figure}
 
-\subsubsection*{Az $E(K) : y^2 = x^3 + ax + b$ görbe tulajdonságai \protect\footnote{Ha $K$ karakterisztikája nem $2$.}}
+\subsubsection{Az $E(K) : y^2 = x^3 + ax + b$ görbe tulajdonságai \protect\footnote{Ha $K$ karakterisztikája nem $2$.}}
 
 \begin{outdentlist}
     \item[]
@@ -133,7 +133,7 @@ Azonban az elliptikus görbe kriptográfia legfontosabb tényezője az elliptiku
     Az \textbf{elliptikus diszkrét logaritmus probléma} (ECDLP): Adott egy $E$ elliptikus görbe az $\mathbb{F}_q$ véges test felett, egy $n$ rendű $P \in E(\mathbb{F}_q)$ pont, valamint egy $Q$ pont, amely $P$ többszöröse. Keressük azt az $l \in [0, n - 1]$ egész számot, amelyre $Q = lP$ teljesül. Ezt a számot a $Q$ pont $P$ alapú elliptikus diszkrét logaritmusának nevezzük.
 \end{definition*}
 
-\subsection*{Párosítás-alapú kriptográfia}
+\subsection{Párosítás-alapú kriptográfia}
 
 A párosításról és a kriptográfiában való alkalmazásáról részletes olvasmány a Guide to pairing-based cryptography \cite{PBCGuide}. Számunkra azonban elegendő a párosítás műveletének tulajdonságait ismerni, továbbá azt, hogy a párosítás alkalmazásával komplex matematikai problémákat vagyunk képesek redukálni azzal, hogy egy másik csoportba visszük át a problémát.
 
@@ -148,7 +148,7 @@ Jelöljön $G_1, G_2$ additív, míg $G_\mathbb{T}$ multiplikatív $r$ rendű cs
     \item[] \textbf{Nehezen megfordítható.}
 \end{outdentlist}
 
-\subsection*{Az M-Pin protokoll algoritmusa}
+\subsection{Az M-Pin protokoll algoritmusa}
 
 A protokollban három entitás játszik szerepet. Az első a Megbízható Hatóság (Trusted Authority, innentől TA). Ennek a szerepe, hogy a megfelelő titkos kulcsokat kiossza a második enitásnak, a felhasználóknak és a harmadik entitásnak, a szervereknek (különböző szolgáltatásoknak). 
 
@@ -167,7 +167,7 @@ Ezek ismeretében tekinthetjük magát az azonosítás folyamatát, ami a \ref{F
     \label{Figure::MPIN}
 \end{figure}
 
-\subsection*{Az M-Pin protokoll biztonságossága}
+\subsection{Az M-Pin protokoll biztonságossága}
 
 \begin{itemize}
     \item Biztonság: A támadási lehetőségek a Diffie-Hellmann problémára és annak variációira vezethetők vissza, amelyek mind nehéz problémák, ezért a protokoll biztonságosnak tekinthető.
