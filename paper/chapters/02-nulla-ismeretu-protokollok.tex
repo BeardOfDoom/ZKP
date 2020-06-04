@@ -34,7 +34,7 @@ A nulla-ismeretű protokollokat Menezes, Oorschot és Vanstone a következő mó
 
 Tekintsünk a nulla-ismeretű protokollokra kezdetben, mint interaktív bizonyítási rendszerekre (intaractive proof system), amiben a bizonyító és a hitelesítő felek többször is üzenetet váltanak. A bizonyjtó célja az, hogy valamilyen módon meggyőzze az hitelesítő felet, hogy birtokában van valamilyen tudásnak. A hitelesítő pedig elfogadhatja vagy elutasíthatja a bizonyítékot. A több üzenetváltásra azért van szükség, mert a bizonyíték egy interaktív játék formájában jön létre, ami egy inkább valószínűségi bizonyíték, mint abszolút bizonyíték. A hitelesítőn múlik, hogy milyen bizonyossággal rendelkező bizonyítékot fogad el, ez általában egy 1-hez rendkívül közeli érték szokott lenni.
 
-Egy interaktív bizonyítékra azt mondjuk, hogy a \textit{tudás bizonyítéka} (proof of knowledge), ha rendelkezik a \textit{teljesség} (completeness) és \textit{megalapozottság} (soundness) tulajdonságokkal.
+Egy interaktív bizonyítékra azt mondjuk, hogy a \textit{proof of knowledge}, ha rendelkezik a \textit{teljesség} (completeness) és \textit{megalapozottság} (soundness) tulajdonságokkal.
 
 \begin{definition}
     \textbf{Teljesség.} Egy interaktív bizonyíték teljes, ha adott egy becsületes bizonyító és egy becsületes hitelesítő, valamint a protokoll sikeresen megy végbe (a hitelesítő elfogadja a bizonyító állítását).
@@ -51,7 +51,7 @@ Míg a fenti tulajdonságok lefekteti a nulla-ismeretű protokollok alapját, a 
 Azonban mielőtt kitérnénk erre a definícióra, szükséges megismernünk mik is a \textit{szimulátorok}. A barlangos példa esetében előjött egy eset, hogy Kriszta felvételt készít Aladár bizonyításáról és beláttuk hiába mutatja azt meg egy harmadik félnek, ő nem fogja elhinni, mert nem megbízható a felvétel mint bizonyíték (könnyen hamisítható). A harmadik fél csak úgy lenne meggyőzhető, ha Aladár eljátszaná a bizonyítást a harmadik fél által választott szekvenciára. Ha létezik olyan módszer, amellyel készíthető az eredetitől megkülönböztethetetlen bizonyíték, akkor azt mondjuk hogy létezik \textit{szimulátor} a bizonyítékra.
 
 \begin{definition}
-    \textbf{Nulla-ismeret.} Egy \textit{tudás bizonyítéka} protokoll, rendelkezik a nulla-ismeret tulajdonsággal, ha szimuláltható a következő módon: létezik egy polinomiális algoritmus (\textit{szimulátor}), amely a valódi bizonyító féllel való együttműködés nélkül képes az bemenetnek megfelelő átiratot készíteni, amely megkülönböztethetetlen a valódi bizonyító féltől kapottól.
+    \textbf{Nulla-ismeret.} Egy \textit{proof of knowledge} protokoll, rendelkezik a nulla-ismeret tulajdonsággal, ha szimuláltható a következő módon: létezik egy polinomiális algoritmus (\textit{szimulátor}), amely a valódi bizonyító féllel való együttműködés nélkül képes az bemenetnek megfelelő átiratot készíteni, amely megkülönböztethetetlen a valódi bizonyító féltől kapottól.
 \end{definition}
 
 A \textit{nulla-ismeret}-ből következik, hogy ha a bizonyító fél végrehajtja a protokollt, azzal nem ad ki semmilyen információt a titokról, csupán bizonyítja a tudását. Így akárhányszor is bizonyítja, a megszemélyesítése nem lesz egyszerűbb.
