@@ -1,6 +1,6 @@
-\chapter{Nulla-ismeretű protokollok azonosításra}
+\chapter{Nulla-ismeretű protokollok alkalmazása autentikációra}
 
-A nulla-ismeretű protokollok egyik elterjedt alkalmazása a felhasználók azonosítása, autentikálása. Ebben a fejezetben ilyen protokollokat fogunk áttekinteni.
+A nulla-ismeretű protokollok egyik elterjedt alkalmazása a felhasználók autentikálása. Ebben a fejezetben ilyen protokollokat fogunk áttekinteni.
 
 \section{A Schnorr azonosító protokoll}
 
@@ -68,7 +68,7 @@ Ezt követően az azonosító protokoll-t mutatja a \ref{Figure::SchnorrProt} á
 
 \begin{itemize}
     \item Biztonság: A biztonságosság egyik fő szereplője a $t$, ezt olyan módon kell megválasztani, hogy $2^{-t}$ kellően kicsi legyen, hiszen ez a valószínűsége a helyes tippelésnek a választott $e$ értékre. A másik fontos pontja a protokollnak a megfelelő méretű $q$ választása, mert ez felelős a diszkrét logaritmus probléma nehézségéért.
-    \item Megalapozottság: A protokollt áttekintve, belátható, hogy $s$ ismerete nélkül nem lehetséges senki számára, hogy $A$-nak adja ki magát, mert ezen információ ismeretében képes csak sikeresen végigjátszani a folyamatot.
+    \item Helyesség: A protokollt áttekintve, belátható, hogy $s$ ismerete nélkül nem lehetséges senki számára, hogy $A$-nak adja ki magát, mert ezen információ ismeretében képes csak sikeresen végigjátszani a folyamatot.
     \item Nulla-ismeret: A protokoll csak akkor teljesíti a nulla-ismeret tulajdonságot, ha a hitelesítő fél becsületesen jár el. Ez azt jelenti, hogy az $e$ értéket valóban random módon választja ki és nem a kapott $x$ értékétől függően. Ha $x$ értéke alapján választ egy számára megfelelő $e$-t, akkor képes információt kinyerni a felhasználó a bizonyító fél titkával kapcsolatban.
 \end{itemize}
 
@@ -171,6 +171,6 @@ Ezek ismeretében tekinthetjük magát az azonosítás folyamatát, ami a \ref{F
 
 \begin{itemize}
     \item Biztonság: A támadási lehetőségek a Diffie-Hellmann problémára és annak variációira vezethetők vissza, amelyek mind nehéz problémák, ezért a protokoll biztonságosnak tekinthető.
-    \item Megalapozottság: A definíció szerinti megalapozottság olyan szinten nem jelenik meg, hogy a protokoll egyik résztvevője a TA ismeri és bármikor kiszámíthatja a felhasználói titkot. Azonban ettől eltekintve belátható, hogy a felhasználó által választott $\alpha$ PIN kód és a token ismerete nélkül nem végrehajtható a protokoll.
+    \item Helyesség: A definíció szerinti helyesség olyan szinten nem jelenik meg, hogy a protokoll egyik résztvevője a TA ismeri és bármikor kiszámíthatja a felhasználói titkot. Azonban ettől eltekintve belátható, hogy a felhasználó által választott $\alpha$ PIN kód és a token ismerete nélkül nem végrehajtható a protokoll.
     \item Nulla-ismeret: A szerver nem képes információhoz jutni sem a folyamat során választott $x$ értékről, sem a felhasználói titokról, mert mind a két esetben az ECDLP megoldása szükséges, ami nehéz feladat. Ezért, ha $y$-t nem random módon választja, akkor se képes információt kinyerni.
 \end{itemize}
