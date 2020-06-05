@@ -2,11 +2,11 @@
 
 Ezen fejezet célja, hogy az azonosításon túl további felhasználási lehetőségeit mutassam be a nulla-ismeretű protokolloknak. Tényleges protokollokat nem fogunk tekinteni, csupán ötleteket és azok előnyeit.
 
-Mielőtt a következő protokollokat tárgyalnánk, szükséges megismerkednünk a \textit{tudásbizonyíték} mellett a \textit{tudásérv} (argument of knowledge) definícióval, ami annyiban különbözük, hogy a \textit{helyesség} tulajdonság esetén a statisztikai követelményt számítási követelménnyé gyengíti. Tehát, míg előbbi esetben a bizonyító fél korlátlan számítási kapacitással bír, addig utóbbiban polinomiálisan kötött számítási kapacitással számolunk.
+Mielőtt a következő protokollokat tárgyalnánk, szükséges megismerkednünk a \textit{tudásbizonyíték} mellett a \textit{tudásérv} (argument of knowledge) definícióval, ami annyiban különbözik, hogy a \textit{helyesség} tulajdonság esetén a statisztikai követelményt számítási követelménnyé gyengíti. Tehát, míg előbbi esetben a bizonyító fél korlátlan számítási kapacitással bír, addig utóbbiban polinomiálisan kötött számítási kapacitással számolunk.
 
 \section{Nem-interaktív nulla-ismeretű protokollok}
 
-A nulla-ismeretű protokollok közül eddig csupán interaktív protokollokról volt szó, azonban rendkívül elterjedt az interaktivitást nem követelő protokollok alkalmazása is. Ezen protokollok megszületését az a probléma indokolta, hogy az interaktivitás számos oda-vissza történő kommunikációt igényel és míg a számítások gyorsan elvégezhetők, az esetenként akár több száz adatcsere közel sem elhanyagolható kölcségekkel jár. 
+A nulla-ismeretű protokollok közül eddig csupán interaktív protokollokról volt szó, azonban rendkívül elterjedt az interaktivitást nem követelő protokollok alkalmazása is. Ezen protokollok megszületését az a probléma indokolta, hogy az interaktivitás számos oda-vissza történő kommunikációt igényel és míg a számítások gyorsan elvégezhetők, az esetenként akár több száz adatcsere közel sem elhanyagolható költségekkel jár. 
 
 Az ilyen protokollok \cite{NIZK, NIZK2} alapötlete, hogy létezzen valamilyen mindenkinek elérhető formában olyan random adat, amely rendelkezik a "well mixedness" tulajdonsággal, ami nem egy kézzel fogható tulajdonság, definíciót a szerzők se adtak. Felfoghatjuk úgy, hogy kriptográfiailag biztonságos random generátorral készült adat.
 
@@ -21,7 +21,7 @@ Egy kurrens protokoll a \cite{SNARK}, amelyet blockchain alapú kriptovaluták e
 
 \section{Bulletproof}
 
-A bulletproof egy olyan nulla-imseretű protokoll, aminek megszületését főként a kriptovaluták elterjedése motiválta. A célja az, hogy megbízható inicializáló folyamat nélkül működjön a protokoll, gyorsan és kis méretű üzeneteket generálva. Ezeket a célokat teljesen kielégíte a \textit{BBBPWM17} \cite{BULLETPROOF}, mely alkalmazásainak fókuszában az áll, hogy a blockchain alapú tranzakciókhoz készítsen tartomány-igazoló bizonyítékot (range proof). Ezen protokollnak is több nyílt forrású implementációja létezik: \href{https://github.com/dalek-cryptography/bulletproofs}{dalek-bulletproofs}, \href{https://github.com/adjoint-io/bulletproofs}{adjoin.io-bulletproofs}.
+A bulletproof egy olyan nulla-ismeretű protokoll, aminek megszületését főként a kriptovaluták elterjedése motiválta. A célja az, hogy megbízható inicializáló folyamat nélkül működjön a protokoll, gyorsan és kis méretű üzeneteket generálva. Ezeket a célokat teljesen kielégíte a \textit{BBBPWM17} \cite{BULLETPROOF}, mely alkalmazásainak fókuszában az áll, hogy a blockchain alapú tranzakciókhoz készítsen tartomány-igazoló bizonyítékot (range proof). Ezen protokollnak is több nyílt forrású implementációja létezik: \href{https://github.com/dalek-cryptography/bulletproofs}{dalek-bulletproofs}, \href{https://github.com/adjoint-io/bulletproofs}{adjoin.io-bulletproofs}.
 
 Elena Nadolinski előadásában\footnote{https://docs.google.com/presentation/d/1gfB6WZMvM9mmDKofFibIgsyYShdf0RV\_Y8TLz3k1Ls0} szerepel egy összehasonlítása népszerű nulla-ismeretű protokolloknak, amely a \ref{Table::ZKPComparison} táblázatban látható.
 

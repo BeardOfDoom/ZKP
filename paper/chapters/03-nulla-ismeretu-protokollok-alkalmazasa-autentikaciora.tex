@@ -4,7 +4,7 @@ A nulla-ismeretű protokollok egyik elterjedt alkalmazása a felhasználók aute
 
 \section{A Schnorr azonosító protokoll}
 
-Ezt megelőzően is léteztek már nulla-ismeretű protokollok, mint Fiat-Shamir \cite{FiatShamir} és annak továbbfejlesztései (FFS \cite{FeigeFiatShamir} és GQ protokollok \cite{GuillouQuisquater}), amelyek biztonsságosságukat a faktorizációs probléma nehézségéből nyerik. 
+Ezt megelőzően is léteztek már nulla-ismeretű protokollok, mint Fiat-Shamir \cite{FiatShamir} és annak továbbfejlesztései (FFS \cite{FeigeFiatShamir} és GQ protokollok \cite{GuillouQuisquater}), amelyek biztonságosságukat a faktorizációs probléma nehézségéből nyerik. 
 
 A Schnorr protokoll \cite{Schnorr}, ezekkel ellentétben a diszkrét logaritmus problémából nyeri biztonságosságát. Manapság az elliptikus görbe kriptográfia egyre nagyobb teret nyer, köszönhetően a kisebb kulcsméretnek, vele együtt pedig növekszik az elliptikus görbe diszkrét logaritmus probléma. Ezért úgy érzem előnyösebb Schnorr protokollját áttekinteni, mint az őt megelőző faktorizáción alapuló protokollokat.
 
@@ -26,7 +26,7 @@ Miközben a modulo $p$ történő hatványozás nagy $p$ értékek esetén is gy
 
 \subsection{A Schnorr azonosító protokoll algoritmusa}
 
-A protokol a rendszer paraméterek inicializáló lépésével indul.
+A protokoll a rendszer paraméterek inicializáló lépésével indul.
 
 \begin{algorithm}[H]
     \floatname{algorithm}{Algoritmus}
@@ -73,7 +73,7 @@ Az azonosító protokoll-t mutatja a \ref{Figure::SchnorrProt} ábra:
 \end{itemize}
 
 \begin{minipage}{\textwidth}
-Ezen felül rendkívül fontos követelménye ennek a protokollnak, hogy egy interaktív folyamat során ne használjuk kétszer ugyanazt a random $r$ értéket, hiszen ha kétszer használnánk egyszerűen kiszámíthatóvá vális az $s$ titkunk a következő módon:
+Ezen felül rendkívül fontos követelménye ennek a protokollnak, hogy egy interaktív folyamat során ne használjuk kétszer ugyanazt a random $r$ értéket, hiszen ha kétszer használnánk egyszerűen kiszámíthatóvá válik az $s$ titkunk a következő módon:
 
 $(y_1 - y_2) / (e_1 - e_2) \pmod{q}$ \\
 $= (r + se_1) - (r + se_2) / (e_1 - e_2) \pmod{q}$ \\
@@ -123,7 +123,7 @@ A kriptográfiában kiemelt szereppel bírnak az úgynevezett Weierstrass ellipt
     \textbf{Pontok skalár szorzása.} Legyen $P \in E(K)$ és $n \in \mathbb{Z}$. Ekkor egy lehetséges módszer a skalár szorzásra a \textit{Double-and-Add} módszer: $$nP = \sum_{i = 0}^{t-1} n_i 2^i(P) = n_0P + 2(n_1P + 2(n_2P + 2(... + 2(n_{t-1}P)...))).$$
 \end{outdentlist}
 
-Most, hogy ismerjük a műveleteket, bemutatom a protokoll szempontjából fontos tulajdonságot a disztibutivitást az elliptikus görbéken.
+Most, hogy ismerjük a műveleteket, bemutatom a protokoll szempontjából fontos tulajdonságot a disztributivitást az elliptikus görbéken.
 
 Legyenek $n \in \mathbb{Z}$ és $P \in E(K)$, ha $n = n_1 + n_2$, akkor $nP = n_1P + n_2P$. Továbbá, legyen $P_1, P_2 \in E(K)$, ekkor $n(P_1 + P_2) = nP_1 + nP_2$.
 
@@ -150,7 +150,7 @@ Jelöljön $G_1, G_2$ additív, míg $G_\mathbb{T}$ multiplikatív $r$ rendű cs
 
 \subsection{Az M-Pin protokoll algoritmusa}
 
-A protokollban három entitás játszik szerepet. Az első a Megbízható Hatóság (Trusted Authority, innentől TA). Ennek a szerepe, hogy a megfelelő titkos kulcsokat kiossza a második enitásnak, a felhasználóknak és a harmadik entitásnak, a szervereknek (különböző szolgáltatásoknak). 
+A protokollban három entitás játszik szerepet. Az első a Megbízható Hatóság (Trusted Authority, innentől TA). Ennek a szerepe, hogy a megfelelő titkos kulcsokat kiossza a második entitásnak, a felhasználóknak és a harmadik entitásnak, a szervereknek (különböző szolgáltatásoknak). 
 
 A TA funkcionalitása nagyon hasonlít az azonosító-alapú (identity-based) protokollok körében alkalmazott Privát Kulcs Generátorra, valamint maga a kulcs generálás folyamata is ugyanaz. A TA rendelkezik egy mesterkulccsal $s$, és a felhasználók valamilyen azonosítókkal $ID$. A felhasználók kulcsának kiszámítása úgy megy végbe, hogy egy $H$ hash függvényt alkalmazva kiszámítjuk $sH(ID)$-t, ezzel előáll egy $G_1$ béli elem. Majd ezt továbbítjuk a felhasználónak. A szerver kulcsának generálása, pedig úgy történik, hogy a szerverhez rendelünk egy egyedi $Q \in G_2$ generátort, majd kiszámítjuk $sQ$-t és azt továbbítjuk.
 
