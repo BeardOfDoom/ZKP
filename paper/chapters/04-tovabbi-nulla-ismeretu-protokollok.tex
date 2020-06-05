@@ -19,6 +19,21 @@ of knowledge).
 
 Egy kurrens protokoll a \cite{SNARK}, amelyet blockchain alapú kriptovaluták esetén előszeretettel alkalmaznak (Zcash\footnote{https://z.cash/technology/zksnarks/}, Filecoin\footnote{https://filecoin.io/}). Számos nyílt forráskódú megvalósítása létezik: \href{https://github.com/scipr-lab/libsnark}{libsnark}, \href{https://github.com/zkcrypto/bellman}{bellman}, \href{https://github.com/scipr-lab/dizk}{dizk}, \href{https://github.com/iden3/wasmsnark}{wasmsnark}.
 
-STARKs \cite{STARK}
+\section{Bulletproof}
 
-Bulletproofs \cite{BULLETPROOF}
+A bulletproof egy olyan nulla-imseretű protokoll, aminek megszületését főként a kriptovaluták elterjedése motiválta. A célja az, hogy megbízható inicializáló folyamat nélkül működjön a protokoll, gyorsan és kis méretű üzeneteket generálva. Ezeket a célokat teljesen kielégíte a \textit{BBBPWM17} \cite{BULLETPROOF}, mely alkalmazásainak fókuszában az áll, hogy a blockchain alapú tranzakciókhoz készítsen tartomány-igazoló bizonyítékot (range proof). Ezen protokollnak is több nyílt forrású implementációja létezik: \href{https://github.com/dalek-cryptography/bulletproofs}{dalek-bulletproofs}, \href{https://github.com/adjoint-io/bulletproofs}{adjoin.io-bulletproofs}.
+
+Elena Nadolinski előadásában\footnote{https://docs.google.com/presentation/d/1gfB6WZMvM9mmDKofFibIgsyYShdf0RV\_Y8TLz3k1Ls0} szerepel egy összehasonlítása népszerű nulla-ismeretű protokolloknak, amely a \ref{Table::ZKPComparison} táblázatban látható.
+
+\begin{table}[H]
+\centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+         \thead{Protokoll} & \thead{Bizonyíték mérete} & \thead{Futásidő \\ (bizonyító)} & \thead{Futásidő \\ (hitelesítő)} \\ \hline
+         \makecell{\textbf{SNARKs} \\ (megbízható inicializálást igényel)} & \textcolor{green}{288 byte} & \textcolor{orange}{2.3s} & \textcolor{green}{10ms} \\ \hline
+        \textbf{STARKs} & \textcolor{red}{45KB-200KB} & \textcolor{green}{1.6s} & \textcolor{orange}{16ms} \\ \hline
+        \textbf{Bulletproofs} & \textcolor{orange}{~1.3KB} & \textcolor{red}{30s} & \textcolor{red}{1100ms} \\ \hline
+    \end{tabular}
+    \caption{Modern nulla-ismeretű protokollok összehasonlítása.}
+    \label{Table::ZKPComparison}
+\end{table}
