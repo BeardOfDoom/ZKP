@@ -12,7 +12,7 @@ Az ilyen protokollok \cite{NIZK, NIZK2} alapötlete, hogy létezzen valamilyen m
 
 Ezzel a módszerrel a kommunikáció egyirányúvá válik, hiszen a hitelesítő fél feladata, hogy random értéket küldjön a bizonyító félnek helyettesítésre került a publikus random adattal, így minimális módosítással csökkenthettük protokollunk komplexitását, méghozzá úgy, hogy a nulla-ismeretű protokollok alaptulajdonságai nem sérülnek.
 
-\section{Succinct non-interactive arguments of knowledge - SNARK}
+\section{SNARK - Succinct non-interactive arguments of knowledge}
 
 Az interaktivitás elhagyásával sikerült kisebb komplexitással rendelkező protokollokat készíteni és ezt felhasználva a gyakorlatban is alkalmazni őket. Továbbra is probléma volt azonban, hogy sok esetben a bizonyító fél által küldött üzenet mérete nagy volt. Például, ha kis számítási kapacitással rendelkezünk és a számítást kiszervezzük valamilyen felhőszolgáltatónak, azonban szeretnénk valamilyen bizonyítékot is kapni a számítás helyességéről, akkor olyan protokoll alkalmazása szükséges használni, amely a kis számítási kapacitással bíró felhasználót nem terheli meg. Erre kompakt és számításigényét tekintve könnyű argumentumok alkalmazása szükséges. Ilyen protokollok például a SNARG (succinct non-interactive argument), vagy a SNARK (succinct non-interactive argument
 of knowledge).
